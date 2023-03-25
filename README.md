@@ -82,9 +82,8 @@ For score section user can be given option to choose specific age group.
 2. Create project in Google Cloud
 3. Initialise app engine
 4. Download Google Cloud SDK
-5. In terminal move to app directory, type '''gcloud init''' and follow instructions
-6. Deploy app with '''gcloud app deploy'''
-<br>
+5. In terminal move to app directory, type ```gcloud init``` and follow instructions
+6. Deploy app with ```gcloud app deploy```
 
 ## Credits
 Olga Michniewicz
