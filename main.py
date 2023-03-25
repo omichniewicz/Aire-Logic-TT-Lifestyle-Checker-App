@@ -6,8 +6,14 @@ import json
 
 app = Flask(__name__)
 
+# Global dictionary to store values during programme run
 personal_data_dict = {}
 
+# PART ONE - collect and validate the data
+
+# Index function is responsible for fetching data from the user. 
+# Date validation is implemented in this function so the flow is interupted before it hits datetime function.
+# try/except block prevents alpha characters from being processed
 @app.route("/", methods = ['GET','POST'])
 def index():
     nhsnumber = request.form.get("nhsnumber")
@@ -31,6 +37,12 @@ def index():
             return render_template("error.html", text="Unexpected characters in date")
     return (render_template('index.html'))
 
+# get_personal_data function processes data from user input.
+# date is transformed to match API format and age is calculated
+# Programme stops here if user is too young
+# There's additional validation for NHSnumber being too short/too long. This is not compliant with the actual standard
+# It has been implemented to avoid unnecessary API calls
+# All data is stored in personal_data_dict 
 def get_personal_data(nhsnumber, name, day, month, year):
     personal_data_dict["nhsnumber"] = nhsnumber
     personal_data_dict["name"] = name
@@ -43,11 +55,17 @@ def get_personal_data(nhsnumber, name, day, month, year):
     personal_data_dict["age"] = user_age
     if len(nhsnumber) != 9:
         return render_template("error.html", text="Incorrect NHS Number")
+    elif int(personal_data_dict["age"]) < 16:
+        return render_template("error.html", text="You are not eligble for this service")
     else:
         return api_validator(nhsnumber)
-        
+
+# api_validator function uses nhsnumber to access API.
+# once matched it splits name into first name and surname since only surname is required by app
+# further processing checks if surname and dob are matching API        
 def api_validator(nhsnumber):
     api_key = 'INSERT SUBSCRIPTION KEY HERE'
+    # SUBSCRIPTION KEY IS NECESSARY TO ACCESS API
    
     url = f'https://al-tech-test-apim.azure-api.net/tech-test/t2/patients/{nhsnumber}'
     headers = {'Ocp-Apim-Subscription-Key': '{key}'.format(key=api_key)}
@@ -55,17 +73,19 @@ def api_validator(nhsnumber):
     response = requests.get(url, headers=headers)
     personal_data_api = json.loads(response.content)
     if response.status_code == 404 or nhsnumber == 123456789:
-        return render_template("error.html", text="Invalid NHS number")
+        return render_template("error.html", text="Your details could not be found")
     elif response.status_code == 200:
         user_name = (personal_data_api["name"]).split(',')
         user_surname_check = user_name[0] 
         if personal_data_dict["name"].casefold() != user_surname_check.casefold() or personal_data_dict["born"] != personal_data_api["born"]:
             return render_template("error.html", text="Your details could not be found")
-        elif int(personal_data_dict["age"]) < 16:
-            return render_template("error.html", text="You are not eligble for this service")
         else:
             return redirect(url_for("ask_questions"))
 
+# PART TWO - collect lifestyle answers and generate score
+
+# ask_questions gatheres lifestyle answers from user. 
+# Only yes/no answer is accepted due to Python's limitation to read from radio or dropdown type inputs.
 @app.route("/questions", methods = ['GET','POST'])
 def ask_questions():
     question_one = request.form.get("question_one")
@@ -76,6 +96,9 @@ def ask_questions():
     else:
         return render_template('questions.html')
 
+# Score_generator follows a simple counter logic and only works if the answer is in range. 
+# There is an additional key_error handler here. I have noticed multiple times that if there is too much going back and forth
+# global dictionary gets emptied and programme is unable to continue. 
 def score_generator(question_one, question_two, question_three):
     try:
         age = int(personal_data_dict["age"])
@@ -120,16 +143,21 @@ def score_generator(question_one, question_two, question_three):
         return render_template("key_error.html") 
     return redirect(url_for("result"))
 
+
+# PART THREE - generate result based on final score
+
 @app.route("/result")
 def result():
     score = personal_data_dict["score"]
     if score <= 3:
         text = "Thank you for answering our questions, we don't need to see you at this time. Keep up the good work!"
         return render_template('result.html', text=text)
-    elif score > 3:
-        text = "We think there are some simple things you could do to improve you quality of life, please phone to book an appointment."
+    else:
+        text = "We think there are some simple things you could do to improve your quality of life, please phone to book an appointment."
         return render_template('result.html', text=text) 
     
+    
+# COMMON WEB ERROR HANDLING
 @app.errorhandler(500)
 def error_handler():
     return render_template("key_error.html")
