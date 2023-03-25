@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+	background-color: #d3f3fe);
+	font-family: raleway;
+	font-size: 20px;
+	align-items: center;
+}
+
+.box1 {
+	background-color: #d3f3fe;
+	width: 50%;
+	height: 100%;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 30px;
+	padding: 10px;
+	color: black;
+
+}
+
+
+.form {
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-top: 3%;
+
+}
+
+
+button {
+	background-color: white;
+	font-family: Raleway;
+	font-weight: bold;
+	font-size: 40px;
+	width: 100%;
+	border-radius: 20px;
+	height: 55px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 15px;
+	margin-bottom: 1%;
+	cursor: pointer;
+	border: none;
+	color: black;
+}
+
+#h1 {
+	text-align: center;
+	font-family: raleway;
+	font-size: 25px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-weight: normal;
+	color: #808080;
+}
+
+
+#h2 {
+	text-align: center;
+	font-family: Raleway;
+	font-size: 50px;
+	margin-top: 5%;
+	margin-bottom: 0px;
+	font-weight: bold;
+}
+
+
+input[type=text] {
+	border-radius: 5px;
+	width: 98%;
+	height: 35px;
+	border: none;
+	font-family: raleway;
+	font-size: 20px
+}
+
+
+p {
+	font-family: raleway;
+	font-size: 15px;
+	margin-right: 7%;
+	margin-left: 7%;
+}
+
+
+footer {
+	text-align: center;
+	font-family: raleway;
+	color: #295D59;
+	padding: 2%;
+}
+
+a {
+	text-decoration: none;
+	color: #295D59;
+	cursor: pointer;
+}
+
+@media(max-width: 1100px) {
+
+	.box1 {
+		width: 90%;
+		height: auto;
+	}
+
+}
+
+
+@media(max-width: 760px) {
+
+	.box1 {
+		height: 100%;
+	}
+
+
+}

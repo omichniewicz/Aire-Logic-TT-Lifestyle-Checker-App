@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href='/static/main.css'>
+      <title>Lifestyle Checker</title>
+   </head>
+   <body>
+      <div class="box1" id="lifestyle-checker">
+         <h6 id="h2">Lifestyle Checker App</h6>
+         <form class="form" id="get-details"  method="post" action=""> 
+            <label for="nhsnumber" id="nhsnumber" max="9">NHS Number:
+            <br>
+            <input id="nhsnumber" name="nhsnumber" type="text" required></label>
+            <br>
+            <label for="name">Surname:
+            <br>
+            <input id="name" name="name" type="text"  required></label>
+            <br>
+            <br>
+            <label for="dob" id="dob">Date of birth:</label>
+            <br>
+            <br>
+            <label for="day" id="day">Day:</label>
+            <input id="day" name="day" type="text" placeholder="dd" minlength="1" maxlength="2" required ></label>
+            <label for="month" id="month">Month:</label>
+            <input id="month" name="month" type="text" placeholder="mm" minlength="1" maxlength="2" required ></label>
+            <label for="year" id="year">Year:</label>
+            <input id="year" name="year" type="text" placeholder="yyyy" minlength="4" maxlength="4" required>
+            <br>
+            <br>
+            <button type="submit" id="submit" value="Submit">Submit</button>
+         </form>
+      </div>
+      <footer>
+         <p>Created by <a href="mailto:michniewicz.olga@gmail.com">Olinka</a></p>
+      </footer>
+   </body>
+</html>
