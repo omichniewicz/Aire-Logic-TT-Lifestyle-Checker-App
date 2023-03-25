@@ -58,6 +58,7 @@ Last task was testing and error handling. I tried to cover all possible scenario
 <br><br>
 <a href="https://docs.google.com/spreadsheets/d/1X3Q0gJnxrXzVPL-RR7yzc0Kyv0dxKXczAfBF_z0nGnM/edit?usp=sharing"><b>Testing Log</b></a>
 <br>
+<br>
 
 ## Further developments
 
@@ -86,7 +87,6 @@ For score section user can be given option to choose specific age group.
 <br>
 
 ## Credits
-<br>
 Olga Michniewicz
 <br>
 <a href="mailto:michniewicz.olga@gmail.com">michniewicz.olga@gmail.com</a>
