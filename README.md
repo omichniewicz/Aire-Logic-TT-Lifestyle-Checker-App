@@ -12,7 +12,7 @@
     Simple Web Application to assess your health based on your lifestyle choices.
     <br />
     <br />
-    <a href="https://lifestyle-checker-app.nw.r.appspot.com/"><b>Launch App</b></a>
+    <a href="https://lifestyle-checker-app.nw.r.appspot.com/" target="_blank"><b>Launch App</b></a>
   
   </p>
 </div>
@@ -56,7 +56,7 @@ I started by creating CLI Python app to cover input/output related requirements 
 Last task was testing and error handling. I tried to cover all possible scenarios. There is one case not covered in the log: 404 and 500 errors are covered the same way as Key Error as I find the message suitable for either scenario. 
 <br>You can find the documentation here:
 <br><br>
-<a href="https://docs.google.com/spreadsheets/d/1X3Q0gJnxrXzVPL-RR7yzc0Kyv0dxKXczAfBF_z0nGnM/edit?usp=sharing"><b>Testing Log</b></a>
+<a href="https://docs.google.com/spreadsheets/d/1X3Q0gJnxrXzVPL-RR7yzc0Kyv0dxKXczAfBF_z0nGnM/edit?usp=sharing" target="_blank"><b>Testing Log</b></a>
 <br>
 <br>
 
@@ -88,8 +88,8 @@ For score section user can be given option to choose specific age group.
 ## Credits
 Olga Michniewicz
 <br>
-<a href="mailto:michniewicz.olga@gmail.com">michniewicz.olga@gmail.com</a>
+<a href="mailto:michniewicz.olga@gmail.com" target="_blank">michniewicz.olga@gmail.com</a>
 <br>
-<a href="https://github.com/omichniewicz">GitHUB</a>
+<a href="https://github.com/omichniewicz" target="_blank">GitHUB</a>
 
 
