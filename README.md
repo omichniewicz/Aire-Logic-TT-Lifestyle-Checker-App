@@ -68,6 +68,7 @@ Last task was testing and error handling. I tried to cover all possible scenario
 <br>
 - CSS allows readability on all types of devices
 <br>
+<br>
 
 ## Further developments
 
