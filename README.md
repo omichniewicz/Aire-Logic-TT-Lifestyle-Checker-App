@@ -70,7 +70,7 @@ Last task was testing and error handling. I tried to cover all possible scenario
 <br>
 <br>
 
-## Further developments
+## Further development
 
 <br>
 Part Three
