@@ -50,11 +50,12 @@ In third part a single function will get "score" value from the global dictionar
 
 ## Building process
 <br>
-I started by creating CLI Python app to cover input/output related requirements of the project. Based on my research I decided to use Flask and Google Cloud to transform my script into Web Application. I had to apply Flask logic to my code and initiate app engine in Google cloud. While logic was still flawed I was able to deploy simple version of my app. I had a lot of issues implementing correct routing. I have never worked with Flask before this task and it took me some time to understand how to create proper conections between the functions. In the meantime I started using very basic HTML templates with render_template function and this actually really helped me. Ultimately I was able to create the routing I wanted and the app was performing as expected. I repurposed some of my old Web Design projects to create user friendly interface. I also used HTML functionality to avoid some input mistakes. 
+I started by creating CLI Python app to cover input/output related requirements of the project. Based on my research I decided to use Flask and Google Cloud to transform my script into Web Application. I had to apply Flask logic to my code and initiate app engine in Google cloud. While logic was still flawed I was able to deploy simple version of my app. I had a lot of issues implementing correct routing. I have never worked with Flask before this task and it took me some time to understand how to create proper connections between the functions. In the meantime I started using very basic HTML templates with render_template function and this actually really helped me. Ultimately I was able to create the routing I wanted and the app was performing as expected. I repurposed some of my old Web Design projects to create user friendly interface. I also used HTML functionality to avoid some input mistakes. <br>
+App works on individual sessions that have replaced global dictionary I've been using initially. Key is created at the begining of the programme run. API Subscription Key is stored in env_variables.yaml file pulled by app.yaml to adhere to Google Cloud standard.
 <br>
+Errors are handled in two ways: input issues are covered via error.html and user friendly messages with option to return, server issues are covered with key_error.html that asks you to start over.
 <br>
-Last task was testing and error handling. I tried to cover all possible scenarios. There is one case not covered in the log: 404 and 500 errors are covered the same way as Key Error as I find the message suitable for either scenario. 
-<br>You can find the documentation here:
+<br>You can find testing documentation here:
 <br><br>
 <a href="https://docs.google.com/spreadsheets/d/1X3Q0gJnxrXzVPL-RR7yzc0Kyv0dxKXczAfBF_z0nGnM/edit?usp=sharing" target="_blank"><b>Testing Log</b></a>
 <br>
@@ -62,7 +63,7 @@ Last task was testing and error handling. I tried to cover all possible scenario
 
 ## Important features
 <br>
-- each session gets its inidivual key
+- each session gets its individual key
 <br>
 - API Subscription Key is stored in .env file
 <br>
@@ -77,7 +78,7 @@ Part Three
 <br>
 Implementing additional functionality so the scoring system can be altered without redeploying the code. 
 <br>
-My idea for this implemenation is to create API to store score values. Each record will contain "min_age", "max_age" and "scores" keys. "Scores" key will contain "question_one", "question_two" and "question_three" values. 
+My idea for this implementation is to create API to store score values. Each record will contain "min_age", "max_age" and "scores" keys. "Scores" key will contain "question_one", "question_two" and "question_three" values. 
 Values from each API will be called in score_generator function.
 Admin path will be added. Accessible only via URL, not from the user interface. Login will be required. 
 Admin should be able to choose between updating age groups and scores.
