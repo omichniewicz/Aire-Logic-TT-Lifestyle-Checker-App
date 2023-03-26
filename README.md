@@ -63,9 +63,9 @@ Errors are handled in two ways: input issues are covered via error.html and user
 
 ## Important features
 <br>
-- each session gets its individual key
+- individual key is generated for each session
 <br>
-- API Subscription Key is stored in .env file
+- API Subscription Key is stored in env_variables.yaml file
 <br>
 - CSS allows readability on all types of devices
 <br>
