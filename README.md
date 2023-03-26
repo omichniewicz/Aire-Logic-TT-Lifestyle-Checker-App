@@ -89,7 +89,7 @@ For score section user can be given option to choose specific age group.
 <br>
 
 1. Clone repo
-2. Add .env file containing Api Subscription Key ```API_SUBSCRIPTION_KEY='{INSERT TOKEN HERE}'```
+2. Add API Subscription key to env_variables.yaml ```API_SUBSCRIPTION_KEY: '{INSERT SUBSCRIPTION KEY HERE}'```
 3. Create project in <a href='https://console.cloud.google.com/'>Google Cloud</a>
 4. Initialise app engine
 5. Download <a href='https://cloud.google.com/sdk/?_ga=2.86659729.-809347455.1679625444&_gac=1.215527653.1679837133.Cj0KCQjw2v-gBhC1ARIsAOQdKY1GnplYqaD31ap2GmFrIc-xOpbGja4cd170rNHZNU79BeNFS5vRl_8aAgFOEALw_wcB'>Google Cloud SDK</a>

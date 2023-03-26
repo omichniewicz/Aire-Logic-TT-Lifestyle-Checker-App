@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, session
 from flask import request
-from datetime import datetime, date, timedelta
+from datetime import date, timedelta
 import requests
 import json
 import os
@@ -28,11 +28,21 @@ def index():
         session['month'] = request.form.get("month")
         session['year'] = request.form.get("year")   
         try:
-            datetime.date.fromisoformat(f"{session['year']}-{session['month']}-{session['day']}")
-            return get_personal_data()       
-        except:
-            return render_template("error.html", text="Please check date entered")
-    return (render_template('index.html'))
+            # I tried multiple ways of validating date input at this stage and this is the only one that worked. 
+            # I wanted it to be included in this function to avoid unnecessary processing and function cycling.
+            if int(session['month']) in [2] and int(session['day']) in range(1,29):
+                return get_personal_data()
+            elif int(session['month']) in [2] and int(session['day']) in range(1,30) and ((int(session['year']) % 4 == 0 and int(session['year']) % 100 != 0) or int(session['year']) % 400 == 0):
+                return get_personal_data()
+            elif int(session['month']) in [4,6,9,11] and int(session['day']) in range(1,31):
+                return get_personal_data()
+            elif int(session['month']) in [1,3,5,7,8,10,12] and int(session['day']) in range(1,32):
+                return get_personal_data()
+            else:
+                return render_template("error.html", text="Please check date entered")
+        except ValueError:
+            return render_template("error.html", text="Unexpected characters in date")
+    return render_template('index.html')
 
 # get_personal_data function processes data from user input.
 # date is transformed to match API format and age is calculated
@@ -153,15 +163,6 @@ def result():
         text = "We think there are some simple things you could do to improve your quality of life, please phone to book an appointment."
         return render_template('result.html', text=text) 
     
-    
-# COMMON WEB ERROR HANDLING
-@app.errorhandler(500)
-def error_handler():
-    return render_template("key_error.html")
-
-@app.errorhandler(404)
-def error_handler():
-    return render_template("key_error.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
