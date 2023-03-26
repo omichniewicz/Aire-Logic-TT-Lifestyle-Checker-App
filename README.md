@@ -37,15 +37,15 @@ App works in three steps:
 1. Ask the user to enter their NHS Number and details, the system will then call an API to identify the patient.
 <br><br>
 Part one of the project is based on three functions. First is responsible for display and collecting data from the user. 
-Additionally it validates date input before moving to another step. Step two is creating a global personal data dictionary that will be used in further processing. It transforms date input to match API format and generates age value. If patient is below 16 years old programme stops at this point as they are not eligible for this service. NHS number length is set at 9 (which is not the actual format but has been set) to avoid unnecessary API calls. Third function calls API and validates NHS number first. If found it checks name and DOB. If there is a match it will let user continue to part two otherwise it will throw an error.
+Additionally it validates date input before moving to another step. Step two is normalising given data before further processing. It transforms date input to match API format and generates age value. If patient is below 16 years old programme stops at this point as they are not eligible for this service. NHS number length is set at 9 (which is not the actual format but has been set) to avoid unnecessary API calls. Third function calls API and validates NHS number first. If found it checks name and DOB. If there is a match it will let user continue to part two otherwise it will throw an error.
 <br><br>
 2. The application will ask the user a number of simple questions about their current lifestyle choices, the answers to these along with their age will be used to generate a risk score. 
 <br><br>
-Part two consists of two functions. First is responsible for display and collecting data from the user. Second validates user input and generates score. The only acceptable answers are "yes" and "no". Any other input will result in error. With valid input it will calculate final score based on "age" value stored in global dictionary and answers passed from ask_question function. Final score will be stored in the dictionary.
+Part two consists of two functions. First is responsible for display and collecting data from the user. Second validates user input and generates score. The only acceptable answers are "yes" and "no". Any other input will result in error. With valid input it will calculate final score based on "age" value stored in session and answers passed from ask_question function. Final score will be stored in the session dictionary as well.
 <br><br>
 3. Based on their score user will be shown applicable result.
 <br><br>
-In third part a single function will get "score" value from the global dictionary. If "score" value is lower than or equal 3 it will display positive result. Otherwise the result will be neagtive. 
+In third part a single function will get "score" value from the global dictionary. If "score" value is lower than or equal 3 it will display positive result. Otherwise the result will be negative. 
 
 
 ## Building process
@@ -59,6 +59,12 @@ Last task was testing and error handling. I tried to cover all possible scenario
 <a href="https://docs.google.com/spreadsheets/d/1X3Q0gJnxrXzVPL-RR7yzc0Kyv0dxKXczAfBF_z0nGnM/edit?usp=sharing" target="_blank"><b>Testing Log</b></a>
 <br>
 <br>
+
+## Important features
+<br>
+- each session gets its inidivual key
+- API Subscription Key is stored in .env file
+- CSS allows readability on all types of devices
 
 ## Further developments
 
@@ -79,11 +85,12 @@ For score section user can be given option to choose specific age group.
 <br>
 
 1. Clone repo
-2. Create project in Google Cloud
-3. Initialise app engine
-4. Download Google Cloud SDK
-5. In terminal move to app directory, type ```gcloud init``` and follow instructions
-6. Deploy app with ```gcloud app deploy```
+2. Add .env file containing Api Subscription Key ```API_SUBSCRIPTION_KEY='{INSERT TOKEN HERE}'```
+3. Create project in <a href='https://console.cloud.google.com/'>Google Cloud</a>
+4. Initialise app engine
+5. Download <a href='https://cloud.google.com/sdk/?_ga=2.86659729.-809347455.1679625444&_gac=1.215527653.1679837133.Cj0KCQjw2v-gBhC1ARIsAOQdKY1GnplYqaD31ap2GmFrIc-xOpbGja4cd170rNHZNU79BeNFS5vRl_8aAgFOEALw_wcB'>Google Cloud SDK</a>
+6. In terminal move to app directory, type ```gcloud init``` and follow instructions
+7. Deploy app with ```gcloud app deploy```
 
 ## Credits
 Olga Michniewicz
