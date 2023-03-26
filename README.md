@@ -63,8 +63,11 @@ Last task was testing and error handling. I tried to cover all possible scenario
 ## Important features
 <br>
 - each session gets its inidivual key
+<br>
 - API Subscription Key is stored in .env file
+<br>
 - CSS allows readability on all types of devices
+<br>
 
 ## Further developments
 
