@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, session
 from flask import request
-from datetime import date, timedelta
+from datetime import datetime, date, timedelta
 import requests
 import json
 import os
@@ -28,18 +28,10 @@ def index():
         session['month'] = request.form.get("month")
         session['year'] = request.form.get("year")   
         try:
-            if int(session['month']) in [2] and int(session['day']) in range(1,29):
-                return get_personal_data(session['nhsnumber'], session['name'], session['day'], session['month'], session['year'])
-            elif int(session['month']) in [2] and int(session['day']) in range(1,30) and ((int(session['year']) % 4 == 0 and int(session['year']) % 100 != 0) or int(session['year']) % 400 == 0):
-                return get_personal_data(session['nhsnumber'], session['name'], session['day'], session['month'], session['year'])
-            elif int(session['month']) in [4,6,9,11] and int(session['day']) in range(1,31):
-                return get_personal_data(session['nhsnumber'], session['name'], session['day'], session['month'], session['year'])
-            elif int(session['month']) in [1,3,5,7,8,10,12] and int(session['day']) in range(1,32):
-                return get_personal_data()
-            else:
-                return render_template("error.html", text="Please check date entered")
-        except ValueError:
-            return render_template("error.html", text="Unexpected characters in date")
+            datetime.date.fromisoformat(f"{session['year']}-{session['month']}-{session['day']}")
+            return get_personal_data()       
+        except:
+            return render_template("error.html", text="Please check date entered")
     return (render_template('index.html'))
 
 # get_personal_data function processes data from user input.
