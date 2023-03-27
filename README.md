@@ -67,7 +67,7 @@ Errors are handled in two ways: input issues are covered via error.html and user
 <br>
 - API Subscription Key is stored in env_variables.yaml file
 <br>
-- CSS allows readability on all types of devices
+- CSS allows readability on all types of devices (however app has yet to be tested on devices other than PC)
 <br>
 <br>
 
